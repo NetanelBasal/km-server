@@ -5,7 +5,12 @@ const list = [];
 for(var i = 0; i < 10000; i++) {
   list.push({
 		"_data": {
+			"From": "Sagi Brietman" + Math.random(),
+			"topic": "[JIRA] (OUTLOOK-1785) moving several item from bla bla",
+			"summary": "This message contains graphics. If you do not see the graphics, This message contains graphics. If you do not see the graphics,",
 			"ConversationId": "0A94C3CADC81394EA7D48861D5ECD2F3",
+			"date": "30/01/2017",
+			"read": false,
 			"Summary": "<p style='direction:ltr'>This message contains graphics. If you do not see the graphics,  click here to view.\r\nGartner Digital Workplace Summit 2017\r\n25 – 26 September, 2017 | London, UK\r\ngartner.com/eu/workplace\r\n...</p>",
 			"LastMail": 1486634511.233,
 			"ConversationTopic": "<p style='direction:ltr'>Daniel, can I have your input?</p>",
@@ -53,8 +58,7 @@ for(var i = 0; i < 10000; i++) {
 			"ReturnedFromLater": false,
 			"ReturnedFromLaterDue": null,
 			"IsImportant": false,
-			"listType": "inbox",
-      "Read": false
+			"listType": "inbox"
 		},
 		"Type": 1,
 		"GroupId": -2,
@@ -67,14 +71,12 @@ for(var i = 0; i < 10000; i++) {
 
 let page = 1;
 function paginate(list, page) {
-  let numItems = 200;
+  let numItems = 100;
   const currentPage = parseInt(page);
   const perPage = parseInt(numItems);
   const offset = ( page - 1 ) * perPage;
   return list.slice(offset, offset + perPage);
 }
-
-
 
 router.get('/', function(req, res, next) {
   res.json(paginate(list, page++));
